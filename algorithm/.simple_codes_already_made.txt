@@ -1,0 +1,242 @@
+Codigos ja feitos ( diferentes tipos de raciocinios) 
+
+#include <bits/stdc++.h>
+#include <cmath>
+using namespace std;
+
+
+-----------------menu code-------------------
+using namespace std;
+
+int main() {
+char x;  
+cout<<"Escreva um numero:"<<endl;
+  cin>>x;
+  switch(x){
+    
+    case '1':
+      cout<<"numero 1"<<endl;
+    break;
+
+    case '2':
+      cout<<"numero 2"<<endl;
+    break;
+    
+    default:
+    cout<<"nao numero um e nem 2"<<endl;
+    
+  } 
+  
+}
+  
+
+------------grade avarage---------
+int main() {
+  float x, y, m;
+
+  cout << "digite a sua nota:" << endl;
+  cin >> x;
+  cout << "digite sua outra nota" << endl;
+  cin >> y;
+  cout << "sua media foi de:" << (x + y) / 2 << endl;
+
+  m = (x + y) / 2;
+
+  if (m >= 7) {
+    cout << "APROVADO" << endl;
+  } else if (m >= 5 && m < 7) {
+    cout << "RECUPERAÇAO" << endl;
+  } else {
+    cout << "REPROVADO" << endl;
+  }
+}
+
+
+----------------jokenpô-------------------
+int main()
+{
+    char jogador1,jogador2;
+    cout<<"escolha uma opcao (R)_(P)_(S)"<<endl;
+       cin>>jogador1;
+    cout<<"escolha uma opcao (R)_(P)_(S)"<<endl;
+        cin>>jogador2;
+
+    if(jogador1==jogador){
+        cout<<"EMPATE"<<endl;
+    }
+
+    else if(jogador1=='r' && jogador2=='P' || jogador1=='s' && jogador2=='P' || jogador1=='P' && jogador2=='R'){
+        cout<<"jogador 1 ganhou"<<endl;
+    }
+
+    else{
+        cout<<"jogador 2 ganhou"<<endl;
+    }
+
+
+}
+
+---------------root calculation-------------------------
+int main()
+{
+  float x,y,a,b,c;
+  cout<< "digite as variaveis nessa sequencia A B C:"<<endl;
+  cin>>a;
+  cin>>b;
+  cin>>c;
+
+   x=(-b+ sqrt(b*b-4*a*c))/2*a;
+
+  cout<<"sua raiz 1 é:"<<x<<endl;
+
+  y=(-b-sqrt(b*b-4*a*c))/2*a;
+
+   cout<<"sua outra raiz é:"<<y<<endl;
+
+-----------odd or even-----------------
+int main() {
+  int x,y,s;
+  cout<<"Escreva um numero"<< endl;
+    cin>>x;
+  s=x%2;
+    if(s==0){
+    cout<<"este numero e par"<<endl;
+    }
+    else{
+      cout<<"este numero e impar"<<endl;
+    }
+}
+
+-------------factorial---------------
+int main()
+{
+    int n,x,m,n1;
+
+    cout<<"digite um numero para ter seu fatorial:"<<endl;
+    cin>>x;
+    n=1;
+    m=1;
+    while (n<x){
+      n=n + 1;
+      m= m*n;
+    }
+cout<<"a fatorial do numero eh:"<<m<<endl;
+}
+
+------------------command for -----
+int main(){
+float a,i,num,m,numaior,numenor;
+printf("media de numeros\n");
+printf("Quantos numeros vc quer ler\n");
+scanf("%f",&a);
+
+for(i=1;i<=a;i++){
+  scanf("%f",&num);
+  m+=num;
+
+    if(i==1){
+      numaior=num;
+      numenor=num;
+    }
+    if(num>numaior){
+      numaior=num;
+    }
+    if(num<numenor){
+      numenor=num;
+    }
+  
+}
+  printf("%g\n",m/a);
+  printf("numero maior= %g\n",numaior);
+  printf("numero menor= %g",numenor);
+}
+  
+
+
+-----------------------------------------
+--------------prime number search----------
+using namespace std;
+
+int main()
+{
+  int num,cont;
+
+  cin>>num;
+  cont=0;
+  for(int i=1;i<=num;i++){
+      if(num % i ==0){
+        cont++;
+      }
+  }
+  if(num==1){
+    cout<<"seu numero e primo"<<endl;
+  }
+  if(cont ==2){
+    cout<<"seu numero e primo"<<endl;
+  }
+  if (cont !=2 && num!=1){
+    cout<<"seu numero nao e primo"<<endl;
+  }
+}
+---------------------------------------
+------------prime numbers up to n------
+int main()
+{
+    int i,num,n,cont,soma;
+
+    printf("Escreva um numero\n");
+    scanf("%d",&num);
+    cont=0;
+    soma=0;
+    for(i=2;i<=num;i++){
+
+        for(n=1;n<=i;n++){
+            if(i%n== 0){
+            cont++;
+                }
+        }
+        if(cont == 2){
+                printf("%d +",i);
+                soma=soma +i;
+                cont=0;
+    }
+cont=0;
+    }
+printf("= %d",soma);
+}
+---------------------------------------
+---------vector sort-------------------
+int main()
+{
+    int x,i,aux,j;
+    printf("digite a quantiade de numeros!\n");
+    scanf( "%d", &x);
+
+    int vetor[x];
+
+    for(i=0 ; i<x ;i++ ){
+        scanf("%d" , &vetor[i]);
+    }
+
+    printf("Os numeros escritos foram\n");
+
+    for(i=0 ; i<x ;i++){
+     printf("%d ,",vetor[i]);
+    }
+
+    printf("\n numeros na ordem crescentes\n");
+
+    for(i=0 ; i<x ;i++){
+            for(j=i+1 ; j<x ; j++){
+
+                if(vetor[i]>vetor[j]){
+                aux=vetor[i];
+                vetor[i]=vetor[j];
+                vetor[j]=aux;
+                }
+            }
+    }
+        for(i=0 ; i<x ;i++){
+            printf("%d ,",vetor[i]);
+        }
+}
