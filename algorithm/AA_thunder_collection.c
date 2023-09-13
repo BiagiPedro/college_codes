@@ -1,10 +1,8 @@
+
 /******************************************************************************
 
 Pedro Biagi 12221BSI200 
 *******************************************************************************/
-Here's the translation of the provided C code into English:
-
-```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -15,7 +13,7 @@ int main()
 {
     typedef struct
     {
-        int isStruckByLightning; // defines if lightning struck the quadrant
+        int isStruck; // indicates whether lightning struck the quadrant or not
         int day, month, year;
         double intensity;
         char conditions[20];
@@ -23,10 +21,14 @@ int main()
 
     int choice, conditionChoice;
     int x, y;
-    int lightningCount = 0; // how many lightning strikes occurred
-    int unaffectedRegionsCount = 0; // counts how many regions were unaffected
+    int lightningCount = 0; // counts how many lightning strikes occurred
+    int unaffectedRegionsCount = 0; // counts how many regions were not affected
     QUADRANT quadrant[Width][Length];
-    QUADRANT *ptrQuadrant = &quadrant[0][0]; // pointer of struct type
+    QUADRANT *ptrQuadrant = quadrant; // pointer of struct type
+
+    for(int i = 0; i < Width; i++)
+        for(int j = 0; j < Length; j++)
+            (ptrQuadrant + (i * Length + j))->isStruck = 0; // reset isStruck for all quadrants
 
     do
     {
@@ -47,7 +49,7 @@ int main()
         case 1:
 
             printf("===== Mark Lightning Strike =====\n");
-            lightningCount++; // counts the number of lightning strikes
+            lightningCount++; // count the number of lightning strikes
             printf("Enter the coordinates of the quadrant (x/y): ");
             scanf("%d %d", &x, &y);
             while(x >= Width || x < 0 || y >= Length || y < 0 )
@@ -57,19 +59,19 @@ int main()
                 scanf("%d %d", &x, &y);
             }
 
-            if((ptrQuadrant + (x * Length + y))->isStruckByLightning == 1) // checks in the struct if isStruckByLightning is already filled
+            if((ptrQuadrant + (x * Length + y))->isStruck == 1) // check if isStruck is already set in the struct
             {
-                printf("TWO LIGHTNING STRIKES IN THE SAME PLACE!!!");
+                printf("TWO LIGHTNING STRIKES AT THE SAME LOCATION!!!");
                 return 0;
             }
 
-            (ptrQuadrant + (x * Length + y))->isStruckByLightning = 1;// helps to determine if the region was affected or not
+            (ptrQuadrant + (x * Length + y))->isStruck = 1; // helps determine whether the region was affected or not
 
             printf("\n----- Date -----\n");
             printf("Day: ");
             setbuf(stdin,NULL);
             scanf("%d", &(ptrQuadrant + (x * Length + y))->day);
-            while(((ptrQuadrant + (x * Length + y))->day) > 31 || ((ptrQuadrant + (x * Length + y))->day) <= 0 )
+            while(((ptrQuadrant + (x * Length + y))->day) > 31 || ((ptrQuadrant + (x * Length + y))->day) <= 0 ) // limit days from 1 to 31
             {
                 printf("Invalid Day!! Enter another day: ");
                 setbuf(stdin,NULL);
@@ -79,7 +81,7 @@ int main()
             printf("Month: ");
             setbuf(stdin,NULL);
             scanf("%d", &(ptrQuadrant + (x * Length + y))->month);
-            while(((ptrQuadrant + (x * Length + y))->month) > 12 || ((ptrQuadrant + (x * Length + y))->month) <= 0 )
+            while(((ptrQuadrant + (x * Length + y))->month) > 12 || ((ptrQuadrant + (x * Length + y))->month) <= 0 ) // limit months from 1 to 12
             {
                 printf("Invalid Month!! Enter another month: ");
                 setbuf(stdin,NULL);
@@ -89,14 +91,14 @@ int main()
             printf("Year: ");
             setbuf(stdin,NULL);
             scanf("%d", &(ptrQuadrant + (x * Length + y))->year);
-            while(((ptrQuadrant + (x * Length + y))->year) > 2023)
+            while(((ptrQuadrant + (x * Length + y))->year) > 2023) // limit years up to 2023
             {
                 printf("Invalid Year!! Enter another year: ");
                 setbuf(stdin,NULL);
                 scanf("%d", &(ptrQuadrant + (x * Length + y))->year);
             }
 
-            printf("\n----- Intensity (kWh) -----\n");
+            printf("\n----- Intensity(kWh) -----\n");
             scanf("%lf", &(ptrQuadrant + (x * Length + y))->intensity);
 
             printf("\n----- Conditions -----\n");
@@ -136,7 +138,7 @@ int main()
         case 3:
             printf("===== Unaffected Regions =====\n");
             unaffectedRegionsCount = (Width * Length) - lightningCount;
-            printf("%d regions were not affected by lightning strikes\n", unaffectedRegionsCount);
+            printf("%d regions were not affected by lightning\n", unaffectedRegionsCount);
             break;
 
         case 4:
@@ -144,7 +146,7 @@ int main()
             for(int i = 0; i < Width; i++)
             {
                 for(int j = 0; j < Length; j++)
-                    if((ptrQuadrant + (i * Length + j))->isStruckByLightning == 1)
+                    if((ptrQuadrant + (i * Length + j))->isStruck == 1)
                         printf("X ");
                     else
                         printf("O ");
@@ -152,12 +154,9 @@ int main()
             }
             break;
         }
-        printf("\n\n\n");
+        printf("\n\n");
     }
-    while (choice != 5); // repeats the menu until the user enters 5 (exit)
+    while (choice != 5); // repeat the menu until the user enters 5 (exit)
 
     return 0;
 }
-```
-
-I've translated the variable names and comments to make the code more readable in English.
