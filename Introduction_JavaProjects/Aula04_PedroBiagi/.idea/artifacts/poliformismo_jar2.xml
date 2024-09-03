@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="poliformismo:jar2">
+    <output-path>$PROJECT_DIR$/out/artifacts/poliformismo_jar2</output-path>
+    <root id="archive" name="poliformismo.jar">
+      <element id="module-output" name="poliformismo" />
+    </root>
+  </artifact>
+</component>

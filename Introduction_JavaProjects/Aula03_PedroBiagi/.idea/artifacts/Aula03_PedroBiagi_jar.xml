@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Aula03_PedroBiagi:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Aula03_PedroBiagi_jar</output-path>
+    <root id="archive" name="Aula03_PedroBiagi.jar">
+      <element id="module-output" name="Aula03_PedroBiagi" />
+    </root>
+  </artifact>
+</component>
